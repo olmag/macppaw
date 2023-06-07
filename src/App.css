@@ -5,11 +5,11 @@
 }
 
 .App {
-    display: flex;
-    max-width: 1440px;
-    margin: 0 auto;
-    min-height: 100vh;
-    height: 100%;
+  display: flex;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 100vh;
+  height: 100%;
 }
 .main {
   padding: 40px;
@@ -20,7 +20,7 @@
   margin-top: 78px;
 }
 
-.greeting__title{
+.greeting__title {
   font-weight: bold;
   font-size: 32px;
   line-height: 44px;
@@ -38,13 +38,11 @@
   background: #f8f8f8;
 }
 
-
-
 .menu__title {
   font-weight: 500;
   font-size: 20px;
   line-height: 28px;
-  color: #ABABAB;
+  color: #ababab;
 }
 
 .nothing-in-fav {
@@ -52,10 +50,10 @@
   margin-top: 20px;
   font-size: 14px;
   line-height: 20px;
-  letter-spacing: -.1px;
+  letter-spacing: -0.1px;
   padding: 20px;
-  background: #FFFFFF;
-  border: 1px solid #F8F8F8;
+  background: #ffffff;
+  border: 1px solid #f8f8f8;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   box-sizing: border-box;

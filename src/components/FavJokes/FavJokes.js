@@ -1,22 +1,17 @@
 import "./Jokes.css";
 
-function Jokes({ jokes, setFavouriteJokes, favouriteJokes }) {
+function FavJokes({ jokes, setFavouriteJokes }) {
   const substringToRemove = "https://api.chucknorris.io/jokes/";
 
   function showCategory(category) {
     return <div className="joke-content_info_category">{category}</div>;
   }
 
-  const addJokeToFavs = (joke) => {
-    const oldFavs = [...favouriteJokes];
-    if (favouriteJokes.includes(joke)) {
-      const newFavs = favouriteJokes.filter((j) => {
-        return j.id !== joke.id;
-      });
-      setFavouriteJokes([...newFavs]);
-    } else {
-      setFavouriteJokes([...oldFavs, joke]);
-    }
+  const removeJokeFromFavs = (joke) => {
+    const oldFavs = jokes.filter((j) => {
+      return j.id !== joke.id;
+    });
+    setFavouriteJokes([...oldFavs]);
   };
 
   return (
@@ -24,13 +19,8 @@ function Jokes({ jokes, setFavouriteJokes, favouriteJokes }) {
       {jokes.map((joke) => (
         <div key={joke.id} className="jokes-ticket">
           <div
-            // className="joke-fav empty-heart"
-            className={
-              favouriteJokes.includes(joke)
-                ? "joke-fav full-heart"
-                : "joke-fav empty-heart"
-            }
-            onClick={() => addJokeToFavs(joke)}
+            className="joke-fav full-heart"
+            onClick={() => removeJokeFromFavs(joke)}
           ></div>
           <div className="joke">
             <div className="joke-icon"></div>
@@ -62,4 +52,4 @@ function Jokes({ jokes, setFavouriteJokes, favouriteJokes }) {
   );
 }
 
-export default Jokes;
+export default FavJokes;
