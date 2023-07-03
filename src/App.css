@@ -12,7 +12,7 @@
   height: 100%;
 }
 .main {
-  padding: 40px;
+  padding: 20px;
   flex: 1 1 auto;
 }
 
@@ -27,19 +27,17 @@
 }
 
 .greeting__content {
-  font-weight: 500;
   font-size: 24px;
   line-height: 44px;
 }
 
 .menu {
-  flex: 0 0 480px;
+  display: none;
   padding: 40px;
   background: #f8f8f8;
 }
 
 .menu__title {
-  font-weight: 500;
   font-size: 20px;
   line-height: 28px;
   color: #ababab;
@@ -57,4 +55,41 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   box-sizing: border-box;
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 20px;
+  }
+  .menu {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 480px)  {
+  .main {
+    padding: 20px;
+  }
+  .menu_icon{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  .active {
+    display: block;
+    position: absolute;
+    right: 0;
+  }
+}
+
+@media screen and (min-width: 960px)  {
+  .main {
+    padding: 40px;
+  }
+  .menu {
+    display: block;
+  }
+  .menu_icon {
+    display: none;
+  }
 }

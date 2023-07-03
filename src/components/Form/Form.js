@@ -5,11 +5,12 @@ import getAllCategories from "../../getAllCategories";
 import getJokeByCategory from "../../getJokeByCategory";
 import getJokeByText from "../../getJokeByText";
 
-function Form({ setJokes }) {
+function Form({ jokes , setJokes }) {
   const [selectedOption, setSelectedOption] = useState("Random");
   const [categories, setCategories] = useState([]);
   const [categoriesOption, setCategoriesOption] = useState("");
   const [text, setText] = useState("");
+  const [mistakes, setMistakes] = useState("")
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
@@ -33,30 +34,43 @@ function Form({ setJokes }) {
     getCat();
   }, []);
 
+  
+
   const getJokeByCat = async () => {
     if (!categoriesOption) {
-      alert("Choose Category");
+      setMistakes("cat")
       return;
     }
     const jokeByCat = await getJokeByCategory(categoriesOption);
-    setJokes((prevJokes) => [jokeByCat, ...prevJokes]);
+
+    const foundJokeById = jokes.some(function(joke){
+      return joke.id === jokeByCat.id
+    })
+ 
+    if(foundJokeById){
+      setJokes((prevJokes) => [...prevJokes]);
+      setMistakes("")
+    } else {
+      setJokes((prevJokes) => [jokeByCat, ...prevJokes]);
+      setMistakes("")
+    }
   };
 
   const getJokeByTxt = async () => {
     if (!text) {
-      alert("change text");
-      return;
+      setMistakes("text")
+      return
     }
     if (text.length >= 3 && text.length < 120) {
       const jokeByText = await getJokeByText(text);
       if (jokeByText === null) {
-        alert("Nothing found");
         setText("");
         return;
       }
       setJokes((prevJokes) => [jokeByText, ...prevJokes]);
+      setMistakes("")
     } else {
-      alert("change text");
+      setMistakes("text")
       return;
     }
   };
@@ -76,10 +90,11 @@ function Form({ setJokes }) {
             <span className="options__categories--text">{item}</span>
           </label>
         ))}
+         {mistakes === 'cat' && <p className="warning-text">Please select a category</p>}
       </div>
     );
   }
-
+  
   function getInput() {
     return (
       <div className="options__search">
@@ -90,6 +105,7 @@ function Form({ setJokes }) {
           onChange={(e) => setText(e.target.value)}
           placeholder="Free text search..."
         ></input>
+        {mistakes === 'text' && <p className="warning-text">Search query must be between 3 and 120 characters</p>}
       </div>
     );
   }

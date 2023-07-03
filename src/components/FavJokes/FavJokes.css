@@ -1,0 +1,13 @@
+.fav-jokes-ticket {
+  margin-top: 20px;
+  width: 400px;
+  min-height: 140px;
+  background: #FFFFFF;
+  border: 1px solid #F8F8F8;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+}

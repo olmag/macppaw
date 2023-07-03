@@ -51,7 +51,6 @@
     padding: 4px 12px;
     margin-right: 6px;
     margin-top: 10px;
-    font-weight: 500;
     font-size: 12px;
     line-height: 16px;
     letter-spacing: 2px;
@@ -97,4 +96,11 @@
     line-height: 22px;
     color: #FFFFFF;
     background: linear-gradient(92.01deg, #8EA7FF 0%, #7291FF 100%);
+}
+
+.warning-text {
+    color: gray;
+    font-size: 12px;
+    margin-top: 10px;
+    margin-left: 10px;
 }

@@ -14,8 +14,12 @@ function Jokes({ jokes, setFavouriteJokes, favouriteJokes }) {
         return j.id !== joke.id;
       });
       setFavouriteJokes([...newFavs]);
+      let favJokesArrayString = JSON.stringify([...newFavs]);
+      localStorage.setItem("favJokes", favJokesArrayString);
     } else {
-      setFavouriteJokes([...oldFavs, joke]);
+      setFavouriteJokes([joke, ...oldFavs]);
+      let favJokesArrayString = JSON.stringify([joke, ...oldFavs]);
+      localStorage.setItem("favJokes", favJokesArrayString);
     }
   };
 
@@ -24,7 +28,6 @@ function Jokes({ jokes, setFavouriteJokes, favouriteJokes }) {
       {jokes.map((joke) => (
         <div key={joke.id} className="jokes-ticket">
           <div
-            // className="joke-fav empty-heart"
             className={
               favouriteJokes.includes(joke)
                 ? "joke-fav full-heart"
